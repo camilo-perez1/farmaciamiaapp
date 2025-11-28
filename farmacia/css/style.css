@@ -1,0 +1,261 @@
+/* Reset de márgenes, paddings y box-sizing para todos los elementos */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales del body */
+body{
+    font-family:  'Poppins', sans-serif;
+    overflow: hidden; /* Oculta scroll */
+}
+
+/* Imagen de fondo tipo "wave" fija y detrás del contenido */
+.wave{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height:100%;
+    z-index: -1;
+}
+.wave-right {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 60%;
+    z-index: -1;
+    /*transform: scaleY(-2); Voltea la imagen verticalmente si quieres efecto espejo */
+}
+
+
+/* Contenedor principal con grid de 2 columnas */
+.contenedor{
+    width: 100vw; /* Ancho completo de la ventana */
+    height: 100vh; /* Alto completo de la ventana */
+    display: grid;
+    grid-template-columns: repeat(2,1fr); /* 2 columnas iguales */
+    grid-gap: 7rem; /* Espacio entre columnas */
+    padding: 0 2rem;
+}
+
+/* Contenedor de la imagen del lado izquierdo */
+.img{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+}
+
+/* Contenedor del formulario de login */
+.contenido-login{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+}
+
+/* Imagen dentro del contenedor de imagen */
+.img img{
+    width: 700px;
+}
+
+/* Formulario de login */
+form{
+    width: 360px;
+}
+
+/* Imagen (avatar) dentro del login */
+.contenido-login img{
+    height: 200px;
+}
+
+/* Título del login */
+.contenido-login h2{
+    margin: 15px 0;
+    color: #333;
+    text-transform: uppercase;
+    font-size: 2.9rem;
+}
+
+/* Contenedor de cada input (DNI y contraseña) */
+.contenido-login .input-div{
+    position: relative;
+    display: grid;
+    grid-template-columns: 7% 93%; /* icono y campo */
+    margin: 25px 0;
+    padding: 5px 0;
+    border-bottom: 2px solid #d4bebe;
+}
+
+/* Primer input sin margen superior */
+.contenido-login .input-div.dni{
+    margin-top: 0;
+}
+
+/* Contenedor del icono */
+.i{
+    color: #d4bebe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Icono dentro del input */
+.i i{
+    transition: .3s; 
+}
+
+/* Contenedor del input y label */
+.input-div >div{
+    position: relative;
+    height: 45px;
+}
+
+/* Label del input (DNI o Contraseña) */
+.input-div > div >h5{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 18px;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .3s;
+}
+
+/* Cuando el input está enfocado, el label sube */
+.input-div.focus > div > h5{
+    top: -5px;
+    font-size: 15px;
+}
+
+/* Líneas animadas debajo del input */
+.input-div:before, .input-div:after{
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background-color: #a5299f;
+    transition: .4s;
+}
+.input-div:before{
+    right: 50%;
+}
+.input-div:after{
+    left: 50%;
+}
+.input-div.focus:before, .input-div.focus:after{
+    width: 50%;
+}
+
+/* Cambia color del icono cuando el input está enfocado */
+.input-div.focus > .i > i{
+    color: #a5299f;
+}
+
+/* Estilos del input de texto */
+.input-div > div > input{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0.5rem 0.7rem;
+    font-size: 18px;
+    color: #555;
+    font-weight: 'Poppins', sans-serif;
+}
+
+/* Margen inferior para el input de contraseña */
+.input-div.pass{
+    margin-bottom: 4px;
+}
+
+/* Estilos para los enlaces (ej: "Created Warpiece") */
+a{
+    display: block;
+    text-align: right;
+    text-decoration: none;
+    color: #999;
+    font-size: 14px;
+    transition: .3s;
+}
+a:hover{
+    color: #0c6cfc;
+}
+
+/* Botón de iniciar sesión */
+.btn{
+    display: block;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    background-image: linear-gradient(to right, #a5299f, #0c6cfc, #e73351);
+    background-size: 200%;
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: .5s;
+}
+.btn:hover{
+    background-position: right;
+}
+
+/* ----------- RESPONSIVE ----------- */
+
+/* Para pantallas menores a 1050px: reduce espacio entre columnas */
+@media screen and (max-width: 1050px){
+    .contenedor{
+        grid-gap: 2rem;
+    }
+}
+
+/* Para pantallas menores a 1000px: reduce tamaño de formulario e imagen */
+@media screen and (max-width: 1000px){
+    forms{
+        width: 290px;
+    }
+    .contenido-login h2{
+        font-size: 2.4rem;
+        margin: 8px 0;
+    }
+    .img img{
+        width: 400px;
+    }
+    .wave{
+        height: 80%;
+    }
+    .wave-right {
+        height: 45%;
+    }
+}
+
+/* Para pantallas menores a 900px: solo una columna, oculta imagen */
+@media screen and (max-width: 700px){
+    .contenedor{
+        grid-template-columns: 1fr;
+    }
+    .img{
+        display: none;
+    }   
+    .wave{
+        height: 35%;
+    }
+    .wave-right{
+        height: 45%;
+    }
+    .contenido-login{
+        justify-content: center;
+    }
+}
+
+
