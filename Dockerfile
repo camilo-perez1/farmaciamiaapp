@@ -8,3 +8,12 @@ COPY farmacia/ /var/www/html/farmacia/
 RUN echo '<?php header("Location: /farmacia/"); ?>' > /var/www/html/index.php
 
 EXPOSE 80
+
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+# link de intento desplieuge: https://farmaciamiaapp.onrender.com
+
+
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
